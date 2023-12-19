@@ -244,13 +244,10 @@ FOR ll_Row = 1 TO  ll_RowCount
 	ls_qrImage = ln_bcserv.of_qrgenerate(ls_data)
 	
 	//Importamos el PDF Completo al Documento
-	lpdf_doc.importpdf(ls_path)
+	lpdf_doc.ImportPdf(ls_path)
 	
-	//Elimino la primera página
-	lpdf_doc.removepage(1)
-
 	//Importamos la Pagina1 al Objeto PdfPage
-	lpdf_page.importcontent(ls_path, 1, 0, 0, lpdf_page.getwidth(), lpdf_page.getheight())
+	lpdf_page = lpdf_doc.GetPage(1)
 	
 	//Creamos la Imagen en el Objeto PdfImage
 	lpdf_image.filename = ls_qrImage
@@ -261,7 +258,7 @@ FOR ll_Row = 1 TO  ll_RowCount
 	lpdf_image.FitMethod = PDFImageFitmethod_Meet!
 	
 	//Añadimos la Imagen Creada al Objeto PdfPage
-	lpdf_page.addcontent( lpdf_image)
+	lpdf_page.AddContent( lpdf_image)
 	
 	//Importamos la Pagina con la Imagen al Objeto PDFDocument en la primera poicion
 	lpdf_doc.InsertPage(lpdf_page, 1)
