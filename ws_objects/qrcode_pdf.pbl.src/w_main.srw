@@ -228,7 +228,7 @@ FOR ll_Row = 1 TO  ll_RowCount
 	
 	ls_path = dw_1.object.path[ll_Row]
 	
-	IF ls_path = "" THEN CONTINUE
+	IF IsNull(ls_path) or trim(ls_path) = "" THEN CONTINUE
 	
 	lpdf_page = create PDFpage
 	lpdf_image = create PDFImage
@@ -259,9 +259,6 @@ FOR ll_Row = 1 TO  ll_RowCount
 	
 	//Añadimos la Imagen Creada al Objeto PdfPage
 	lpdf_page.AddContent( lpdf_image)
-	
-	//Importamos la Pagina con la Imagen al Objeto PDFDocument en la primera poicion
-	lpdf_doc.InsertPage(lpdf_page, 1)
 	
 	//Guardo el PDF con un nuevo nombre.
 	ls_path = ln_file.of_getdirectoryname(ls_path)+"\"+string(ll_row)+".pdf"
