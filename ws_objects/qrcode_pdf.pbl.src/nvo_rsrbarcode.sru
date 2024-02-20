@@ -12,8 +12,8 @@ global nvo_rsrbarcode nvo_rsrbarcode
 type variables
 
 PUBLIC:
-String is_assemblypath = "RSRbarcode.dll"
-String is_classname = "RSRbarcode.RSRbarcode"
+String is_assemblypath = gs_appdir+"bin\RSRBarcode.dll"
+String is_classname = "RSRBarcode.RSRbarcode"
 
 /* Exception handling -- Indicates how proxy handles .NET exceptions */
 Boolean ib_CrashOnException = False
@@ -142,7 +142,7 @@ public function boolean of_createondemand ();
 //*  Return   True:  .NET object created
 //*               False: Failed to create .NET object
 //*  Loads .NET assembly and creates instance of .NET class.
-//*  Uses .NET Core when loading .NET assembly.
+//*  Uses .NET when loading .NET assembly.
 //*  Signals error If an error occurs.
 //*  Resets any prior error when load + create succeeds.
 //*--------------------------------------------------------------*/
@@ -153,11 +153,11 @@ If This.ib_objectCreated Then Return True // Already created => DONE
 Long ll_status 
 String ls_action
 
-/* Load assembly using .NET Core */
+/* Load assembly using .NET */
 ls_action = 'Load ' + This.is_AssemblyPath
 DotNetAssembly lnv_assembly
 lnv_assembly = Create DotNetAssembly
-ll_status = lnv_assembly.LoadWithDotNetCore(This.is_AssemblyPath)
+ll_status = lnv_assembly.LoadWithDotNet(This.is_AssemblyPath)
 
 /* Abort when load fails */
 If ll_status <> 1 Then
