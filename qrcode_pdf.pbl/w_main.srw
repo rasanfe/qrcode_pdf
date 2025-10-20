@@ -156,7 +156,7 @@ fontfamily fontfamily = swiss!
 string facename = "Tahoma"
 string pointer = "Hyperlink!"
 boolean originalsize = true
-string picturename = "C:\proyecto pw2022\Blog\PowerBuilder\qrcode_pdf\open.png"
+string picturename = "open.png"
 alignment htextalign = left!
 string powertiptext = "Open All PDF to Writter"
 end type

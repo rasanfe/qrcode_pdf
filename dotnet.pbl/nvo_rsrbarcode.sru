@@ -419,6 +419,6 @@ TriggerEvent( this, "destructor" )
 call super::destroy
 end on
 
-event constructor;is_assemblypath = gs_appdir+"DotNet\RSRBarcode\RSRBarcode.dll"
+event constructor;is_assemblypath = gs_appdir+"\DotNet\RSRBarcode\RSRBarcode.dll"
 end event
 
