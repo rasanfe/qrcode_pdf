@@ -110,17 +110,18 @@ end function
 public function boolean of_controles_previos ();String ls_archivos[]
 Int li_idx, li_totalArchivos
 
-ls_archivos[]={"RSRBarcode.deps.json", "RSRBarcode.dll", "zxing.dll", "ZXing.Windows.Compatibility.dll", "PdfiumViewer.dll", "System.Drawing.Common.dll", "Microsoft.Win32.SystemEvents.dll","x64\pdfium.dll" ,"nl\PdfiumViewer.resources.dll"}
+ls_archivos[]={"RSRBarcode.deps.json", "RSRBarcode.dll", "PDFtoImage.dll", "SkiaSharp.dll", "ZXing.SkiaSharp.dll", "zxing.dll", "System.Drawing.Common.dll", "System.Private.Windows.Core.dll", "System.Private.Windows.GdiPlus.dll", "Microsoft.Win32.SystemEvents.dll", "runtimes\win-x64\native\pdfium.dll", "runtimes\win-x64\native\libSkiaSharp.dll"}
 
 li_totalArchivos = UpperBound(ls_archivos[])
 
 FOR li_idx = 1 TO li_totalArchivos
 	IF NOT FileExists(gs_appdir+"\DotNet\RSRBarcode\"+ls_archivos[li_idx]) THEN
-		messagebox ("Atención", "¡ Necesita el Archivo "+gs_appdir+"\bin\"+ls_archivos[li_idx]+" !", Exclamation!)
+		messagebox ("Atención", "¡ Necesita el Archivo "+gs_appdir+"\DotNet\RSRBarcode\"+ls_archivos[li_idx]+" !", Exclamation!)
 		Return FALSE
 	END IF
-NEXT	
+NEXT
 
+Return TRUE
 
 end function
 
